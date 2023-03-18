@@ -1,0 +1,93 @@
+﻿@page
+@model CSPharma_v4._1.Pages.EstadosEnvioPedido.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="body">
+    <h1>Create</h1>
+
+    <h4>TdcCatEstadosEnvioPedido</h4>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="TdcCatEstadosEnvioPedido.CodEstadoEnvio" class="control-label"></label>
+                    <input asp-for="TdcCatEstadosEnvioPedido.CodEstadoEnvio" class="form-control" />
+                    <span asp-validation-for="TdcCatEstadosEnvioPedido.CodEstadoEnvio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcCatEstadosEnvioPedido.MdUuid" class="control-label"></label>
+                    <input asp-for="TdcCatEstadosEnvioPedido.MdUuid" class="form-control" />
+                    <span asp-validation-for="TdcCatEstadosEnvioPedido.MdUuid" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcCatEstadosEnvioPedido.MdDate" class="control-label"></label>
+                    <input asp-for="TdcCatEstadosEnvioPedido.MdDate" class="form-control" />
+                    <span asp-validation-for="TdcCatEstadosEnvioPedido.MdDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcCatEstadosEnvioPedido.DesEstadoEnvio" class="control-label"></label>
+                    <input asp-for="TdcCatEstadosEnvioPedido.DesEstadoEnvio" class="form-control" />
+                    <span asp-validation-for="TdcCatEstadosEnvioPedido.DesEstadoEnvio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+
+        <!-- Leyenda -->
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Código Estado Envío</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>S1</td>
+                    <td>Solicitado</td>
+                </tr>
+                <tr>
+                    <td>R1</td>
+                    <td>Registrado en Almacén</td>
+                </tr>
+                <tr>
+                    <td>P1</td>
+                    <td>En Preparación</td>
+                </tr>
+                <tr>
+                    <td>E1</td>
+                    <td>Enviado Completo</td>
+                </tr>
+                <tr>
+                    <td>E2</td>
+                    <td>Enviado Parcial</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>Devuelto</td>
+                </tr>
+                <tr>
+                    <td>R</td>
+                    <td>Recibido en Farmacia</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

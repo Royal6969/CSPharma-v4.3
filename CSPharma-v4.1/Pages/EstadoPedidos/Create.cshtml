@@ -1,0 +1,129 @@
+﻿@page
+@model CSPharma_v4._1.Pages.EstadoPedidos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="body">
+    <h1>Create</h1>
+
+    <h4>TdcTchEstadoPedidos</h4>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="TdcTchEstadoPedidos.MdUuid" class="control-label"></label>
+                    <input asp-for="TdcTchEstadoPedidos.MdUuid" class="form-control" />
+                    <span asp-validation-for="TdcTchEstadoPedidos.MdUuid" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcTchEstadoPedidos.MdDate" class="control-label"></label>
+                    <input asp-for="TdcTchEstadoPedidos.MdDate" class="form-control" />
+                    <span asp-validation-for="TdcTchEstadoPedidos.MdDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcTchEstadoPedidos.CodPedido" class="control-label"></label>
+                    <input asp-for="TdcTchEstadoPedidos.CodPedido" class="form-control" />
+                    <span asp-validation-for="TdcTchEstadoPedidos.CodPedido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcTchEstadoPedidos.CodEstadoEnvio" class="control-label"></label>
+                    <select asp-for="TdcTchEstadoPedidos.CodEstadoEnvio" class="form-control" asp-items="ViewBag.CodEstadoEnvio"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcTchEstadoPedidos.CodEstadoPago" class="control-label"></label>
+                    <select asp-for="TdcTchEstadoPedidos.CodEstadoPago" class="form-control" asp-items="ViewBag.CodEstadoPago"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcTchEstadoPedidos.CodEstadoDevolucion" class="control-label"></label>
+                    <select asp-for="TdcTchEstadoPedidos.CodEstadoDevolucion" class="form-control" asp-items="ViewBag.CodEstadoDevolucion"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TdcTchEstadoPedidos.CodLinea" class="control-label"></label>
+                    <select asp-for="TdcTchEstadoPedidos.CodLinea" class="form-control" asp-items="ViewBag.CodLinea"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+
+        <!-- Leyenda -->
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Código Estado Envío</th>
+                    <th>Descripción</th>
+                    <th>Código Estado Pago</th>
+                    <th>Descripción</th>
+                    <th>Código Estado Devolución</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>S1</td>
+                    <td>Solicitado</td>
+                    <td>E1</td>
+                    <td>Emitida Factura</td>
+                    <td>A</td>
+                    <td>Aceptada</td>
+                </tr>
+                <tr>
+                    <td>R1</td>
+                    <td>Registrado en Almacén</td>
+                    <td>P</td>
+                    <td>Pagado</td>
+                    <td>R</td>
+                    <td>Rechazada</td>
+                </tr>
+                <tr>
+                    <td>P1</td>
+                    <td>En Preparación</td>
+                    <td>P2</td>
+                    <td>Pago Fraccionado</td>
+                    <td>D1</td>
+                    <td>Devolución en Almacén</td>
+                </tr>
+                <tr>
+                    <td>E1</td>
+                    <td>Enviado Completo</td>
+                    <td>R</td>
+                    <td>Rechazado</td>
+                    <td>D2</td>
+                    <td>Devolución Finalizada</td>
+                </tr>
+                <tr>
+                    <td>E2</td>
+                    <td>Enviado Parcial</td>
+                    <td>D1</td>
+                    <td>Emisión Cancelación</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>Devuelto</td>
+                    <td>D2</td>
+                    <td>Pago Devuelto</td>
+                </tr>
+                <tr>
+                    <td>R</td>
+                    <td>Recibido en Farmacia</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

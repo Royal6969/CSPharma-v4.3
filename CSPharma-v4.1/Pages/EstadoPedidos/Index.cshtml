@@ -1,0 +1,213 @@
+﻿@page
+@model CSPharma_v4._1.Pages.EstadoPedidos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="body">
+    <h1>Index</h1>
+    
+    <br />
+
+    <input type="text" id="searchId" placeholder="buscar por ID" />
+    <input type="text" id="searchCodPedido" placeholder="buscar por cod Pedido" />
+    <input type="text" id="searchCodLinea" placeholder="buscar por cod linea" />
+    <input type="text" id="searchDesEstadoEnvio" placeholder="buscar por cod estado envío" />
+    <input type="text" id="searchDesEstadoPago" placeholder="buscar por cod estado pago" />
+    <input type="text" id="searchDesEstadoDevolucion" placeholder="buscar por cod estado devolución" />
+
+
+    <br />
+    <br />
+
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].MdUuid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].MdDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].CodPedido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].CodLinea)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].CodEstadoEnvio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].CodEstadoPago)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TdcTchEstadoPedidos[0].CodEstadoDevolucion)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TdcTchEstadoPedidos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MdUuid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MdDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodPedido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodLineaNavigation.CodLinea)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodEstadoEnvioNavigation.DesEstadoEnvio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodEstadoPagoNavigation.DesEstadoPago)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodEstadoDevolucionNavigation.DesEstadoDevolucion)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/lib/jquery/dist/jquery-3.6.3.min.js" asp-append-version="true"></script>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>*@
+
+<script>
+    $("#searchId").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(3)").text(); // nth-child(3) --> Id
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchCodPedido").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(4)").text(); // nth-child(4) --> Cod Pedido
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchCodLinea").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(5)").text(); // nth-child(5) --> Cod Linea
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchDesEstadoEnvio").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(6)").text(); // nth-child(6) --> DesEstadoEnvio
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchDesEstadoPago").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(7)").text(); // nth-child(7) --> DesEstadoPago
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("#searchDesEstadoDevolucion").on("keyup", function () {
+        var inputSearch = $(this).val();
+
+        $("table tr").each(function (results) {
+            if (results !== 0) {
+                var search = $(this).find("td:nth-child(8)").text(); // nth-child(8) --> DesEstadoDevolucion
+
+                if (search.indexOf(inputSearch) !== 0 && search.toLowerCase().indexOf(inputSearch.toLowerCase()) < 0) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            }
+        });
+    });
+</script>
